@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Bootstrap css-->
+    <link href="views/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery and Bootstrap js -->
+    <script src="views/js/jquery-min.js"></script>
+    <script src="views/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div><h2>Pedido de compra</h2></div>
+    <div class="container custom_table">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th style="width: 20%;">Nome</th>
+            <th style="width: 20%;">Descrição</th>
+            <th style="width: 20%;">Quantidade Atual</th>
+            <th style="width: 20%;">Quantidade Mínima</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $key, $value := .ProductList }}
+            <tr>
+              <td style="width: 20%; text-align: center">{{$value.Name}}</td>
+              <td style="width: 20%; text-align: center">{{$value.Description}}</td>
+              <td style="width: 20%; text-align: center">{{$value.CurrQuantity}}</td>
+              <td style="width: 20%; text-align: center">{{$value.MinQuantity}}</td>
+            </tr>
+          {{ end }}
+        </tbody>
+      </table>
+      <br>
+    </div>
+
+    {{ if .ProductList }}
+      Aprovado: {{.Approved}}
+      <div>
+        <div>
+          <form method="POST" action="/order">
+            <input type="text" name="ignore" style="visibility:hidden"><br>
+            <input type="submit" value="Aprovar">
+          </form>
+        </div>
+      </div>
+    {{ end }}
+  </body>
+</html>
