@@ -17,7 +17,7 @@ func defaultHandler(w http.ResponseWriter, r *http.Request) {
 	p.ID = 3
 	bJSON, err := json.Marshal(p)
 	req, err := http.NewRequest("DELETE", "http://127.0.0.1:8080/product", bytes.NewBuffer(bJSON))
-
+	req.Header.Set("Content-Type", "application/json")
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
