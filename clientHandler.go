@@ -13,8 +13,12 @@ import (
 )
 
 func makeRequest(httpMethod string, url string, requestObj []byte, headers map[string]string) (*http.Response, error) {
+	//creating request obj
 	req, err := http.NewRequest(httpMethod, url, bytes.NewBuffer(requestObj))
+
+	//Adding request headers
 	addHeaders(req, headers)
+
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
@@ -25,11 +29,12 @@ func makeRequest(httpMethod string, url string, requestObj []byte, headers map[s
 
 }
 
-func parseJSON(decodedJSON io.ReadCloser, object interface{}) {
-	decoder := json.NewDecoder(decodedJSON)
+func parseJSON(encodedJSON io.ReadCloser, object interface{}) {
+	decoder := json.NewDecoder(encodedJSON)
 	decoder.Decode(object)
 }
 
+// Return a json object marshaled as []byte
 func getJSON(object interface{}) ([]byte, error) {
 	if object != nil {
 		return json.Marshal(object)
@@ -71,15 +76,18 @@ func DELETEProductHandler(w http.ResponseWriter, r *http.Request) {
 	headers["Content-Type"] = "application/json"
 
 	var toDelete models.Product
+	//Parse json from request to object
 	parseJSON(r.Body, &toDelete)
 
+	//get JSON Marshaled as []byte
 	bJSON, err := getJSON(toDelete)
-	response, err := makeRequest("DELETE", "http://127.0.0.1:8080/product", bJSON, headers)
+	if err == nil {
+		response, err := makeRequest("DELETE", "http://127.0.0.1:8080/product", bJSON, headers)
 
-	if response != nil && err == nil {
-		body, _ := ioutil.ReadAll(response.Body)
-		fmt.Println("response Body:", string(body))
-		//TODO redirect
+		if response != nil && err == nil {
+			body, _ := ioutil.ReadAll(response.Body)
+			fmt.Println("response Body:", string(body))
+			//TODO redirect
+		}
 	}
-
 }
