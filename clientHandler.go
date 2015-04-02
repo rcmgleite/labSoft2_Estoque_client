@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"text/template"
 
-	"github.com/rcmgleite/labEngSoft_Estoque/models"
+	"github.com/rcmgleite/labSoft2_Estoque/models"
 )
 
 func makeRequest(httpMethod string, url string, requestObj []byte, headers map[string]string) (*http.Response, error) {
