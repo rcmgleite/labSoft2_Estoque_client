@@ -1,18 +1,34 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <div>
-      <div>
-        <form method="GET" action="/product">
-          <input type="submit" value="Produtos">
-        </form>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>Home | Modulo de Estoque</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Bootstrap css-->
+      <link href="views/css/bootstrap.min.css" rel="stylesheet">
+      <!-- jQuery and Bootstrap js -->
+      <script src="views/js/jquery-min.js"></script>
+      <script src="views/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+      <div class="container">
+        <div class="jumbotron" >
+          <h1>Módulo de Estoque </h1>
+          <p>Escolha a funcionalidade: </p>
+          <table  width="350">
+            <tr>
+              <th >
+                <form method="GET" action="/product">
+                  <button type="submit" class="btn btn-primary">Estoque de Produtos</button>
+                </form>
+              </th>
+              <th>
+                <form method="GET" action="/order">
+                  <button type="submit" class="btn btn-primary">Ordens de Compra</button>
+                </form>
+              </th>
+            </tr>
+        </div>
       </div>
-      <br>
-      <div>
-        <form method="GET" action="/order">
-          <input type="submit" value="Pedidos de Compra">
-        </form>
-      </div>
-    </div>
-  </body>
-</html>
+    </body>
+  </html>
