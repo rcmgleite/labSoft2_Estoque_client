@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+
 <html>
   <head>
+  <title>Estoque de Produtos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap css-->
     <link href="views/css/bootstrap.min.css" rel="stylesheet">
     <!-- jQuery and Bootstrap js -->
@@ -8,7 +11,31 @@
     <script src="views/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div><h2>Produtos cadastrados no Estoque</h2></div>
+
+    <!-- Navegation Bar -->
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a>Estoque de Produtos</a></li>
+            <li>
+              <form method="GET" action="/order">
+                <button type="submit" class="btn btn-link">Ordens de Compra</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header List -->
+    <div class="container">
+      <div class="page-header">
+        <h1>Estoque de Produtos</h1>
+      </div>
+    </div>
+
+<!-- Product List -->
     <div class="container custom_table">
       <table class="table table-striped">
         <thead>
@@ -22,53 +49,43 @@
         </thead>
         <tbody>
           {{ range $key, $value := . }}
-            <tr>
-              <td style="width: 20%; text-align: center">{{$value.Name}}</td>
-              <td style="width: 20%; text-align: center">{{$value.Description}}</td>
-              <td style="width: 20%; text-align: center">{{$value.Type}}</td>
-              <td style="width: 20%; text-align: center">{{$value.CurrQuantity}}</td>
-              <td style="width: 20%; text-align: center">{{$value.MinQuantity}}</td>
-            </tr>
+          <tr>
+            <td style="width: 20%; text-align: center">{{$value.Name}}</td>
+            <td style="width: 20%; text-align: center">{{$value.Description}}</td>
+            <td style="width: 20%; text-align: center">{{$value.Type}}</td>
+            <td style="width: 20%; text-align: center">{{$value.CurrQuantity}}</td>
+            <td style="width: 20%; text-align: center">{{$value.MinQuantity}}</td>
+          </tr>
           {{ end }}
         </tbody>
-
       </table>
-      <br>
     </div>
 
-    <div>
-      <form method="POST" action="/product">
-        <div>
-          Nome
-          <br>
-          <input type="text" name="Name"><br>
-          <br>
+    <!-- Product Form -->
+    <div class="container">
+      <h2>Adicionar Novo Produto</h2>
+        <form method="POST" action="/product" role="form">
+        <div class="form-group">
+          <label for="usr">Nome:</label>
+          <input type="text" class="form-control" name="Name">
         </div>
-        <div>
-          Descrição
-          <br>
-          <input type="text" name="Description"><br>
-          <br>
+        <div class="form-group">
+          <label for="pwd">Descrição:</label>
+          <input type="password" class="form-control" name="Descrption">
         </div>
-        <div>
-          Tipo
-          <br>
-          <input type="text" name="Type"><br>
-          <br>
+        <div class="form-group">
+          <label for="pwd">Tipo:</label>
+          <input type="password" class="form-control" name="Type">
         </div>
-        <div>
-          Quantidade atual
-          <br>
-          <input type="text" name="CurrQuantity"><br>
-          <br>
+        <div class="form-group">
+          <label for="pwd">Quantidade Atual:</label>
+          <input type="password" class="form-control" name="CurrQuantity">
         </div>
-        <div>
-          Quantidade mínima
-          <br>
-          <input type="text" name="MinQuantity"><br>
-          <br>
+        <div class="form-group">
+          <label for="pwd">Quantidade Mínima:</label>
+          <input type="password" class="form-control" name="MinQuantity">
         </div>
-        <input type="submit" value="Adicionar">
+        <button type="submit" class="btn btn-primary">Adicionar</button>
       </form>
     </div>
   </body>
