@@ -179,11 +179,27 @@ func GETOrderHandler(w http.ResponseWriter, r *http.Request) {
 	headers["Content-Type"] = "application/json"
 	response, err := makeRequest("GET", "http://127.0.0.1:8080/order", nil, headers)
 	if response != nil && err == nil {
-		fmt.Println(response.Body)
 		parseJSON(response.Body, &rj)
-		fmt.Printf("%v\n", rj.ResponseBody)
 		t.Execute(w, rj.ResponseBody)
 		return
 	}
 	t.Execute(w, nil)
+}
+
+// POSTOrderHandler ...
+func POSTOrderHandler(w http.ResponseWriter, r *http.Request) {
+	var id int
+	id, _ = strconv.Atoi(r.FormValue("ID"))
+	order := models.Order{ID: id, Approved: true}
+	bJSON, err := getJSON(order)
+	if err == nil {
+		headers := make(map[string]string)
+		headers["Content-Type"] = "application/json"
+		_, err := makeRequest("PUT", "http://127.0.0.1:8080/order", bJSON, headers)
+		if err != nil {
+			fmt.Println(err)
+		}
+	}
+
+	http.Redirect(w, r, "/order", http.StatusFound)
 }

@@ -34,12 +34,11 @@
     </div>
 
     {{ if .Products }}
-      Aprovado: {{.Approved}}
       <div>
         <div>
-          <form method="POST" action="/order">
-            <input type="text" name="ignore" style="visibility:hidden"><br>
-            <input type="submit" value="Aprovar">
+          <form method="POST" action="/order" role="form">
+            <input type="hidden" name="ID" value="{{.ID}}">
+            <input type="submit" value="Enviar">
           </form>
         </div>
       </div>
