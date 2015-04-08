@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"text/template"
 
-	"github.com/rcmgleite/labSoft2_Estoque/models"
+	"github.com/soriani/labSoft2_Estoque/models"
 )
 
 func makeRequest(httpMethod string, url string, requestObj []byte, headers map[string]string) (*http.Response, error) {
@@ -66,6 +66,7 @@ func GETProductHandler(w http.ResponseWriter, r *http.Request) {
 		parseJSON(response.Body, &products)
 
 		t.Execute(w, products)
+		return
 	}
 	t.Execute(w, nil)
 }

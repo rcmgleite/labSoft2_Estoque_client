@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/rcmgleite/labSoft2_Estoque/router"
+	"github.com/soriani/labSoft2_Estoque/router"
 )
 
 //Run = main for client
