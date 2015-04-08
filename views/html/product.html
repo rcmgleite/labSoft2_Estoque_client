@@ -49,14 +49,20 @@
           </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
 
           <tr>
             <td style="width: 20%; text-align: center">{{$value.Id}}</td>
+=======
+          {{ range $key, $value := . }}
+          <tr>
+>>>>>>> 5c01c73e8abca6dbdd07d77fab7d175363966d74
             <td style="width: 20%; text-align: center">{{$value.Name}}</td>
             <td style="width: 20%; text-align: center">{{$value.Description}}</td>
             <td style="width: 20%; text-align: center">{{$value.Type}}</td>
             <td style="width: 20%; text-align: center">{{$value.CurrQuantity}}</td>
             <td style="width: 20%; text-align: center">{{$value.MinQuantity}}</td>
+<<<<<<< HEAD
             <td>
               <form method="GET" action="/productAdd?id={{$value.Id}}">
                 <button type="submit" class="btn btn-primary">Atualizar</button>
@@ -68,6 +74,8 @@
               </form>
             </td>
 
+=======
+>>>>>>> 5c01c73e8abca6dbdd07d77fab7d175363966d74
           </tr>
           {{ end }}
         </tbody>
@@ -84,7 +92,11 @@
         </div>
         <div class="form-group">
           <label for="pwd">Descrição:</label>
+<<<<<<< HEAD
           <input type="password" class="form-control" name="Description">
+=======
+          <input type="password" class="form-control" name="Descrption">
+>>>>>>> 5c01c73e8abca6dbdd07d77fab7d175363966d74
         </div>
         <div class="form-group">
           <label for="pwd">Tipo:</label>
@@ -98,7 +110,11 @@
           <label for="pwd">Quantidade Mínima:</label>
           <input type="password" class="form-control" name="MinQuantity">
         </div>
+<<<<<<< HEAD
         <button type="submit" class="btn btn-success">Adicionar</button>
+=======
+        <button type="submit" class="btn btn-primary">Adicionar</button>
+>>>>>>> 5c01c73e8abca6dbdd07d77fab7d175363966d74
       </form>
     </div>
   </body>
