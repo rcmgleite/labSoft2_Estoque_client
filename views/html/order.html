@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Pedido de Compra</title>
     <!-- Bootstrap css-->
     <link href="views/css/bootstrap.min.css" rel="stylesheet">
     <!-- jQuery and Bootstrap js -->
@@ -8,7 +9,26 @@
     <script src="views/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div><h2>Pedido de compra</h2></div>
+
+    <!-- Navegation Bar -->
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div>
+          <ul class="nav navbar-nav">
+            <li><a href="/product">P>Estoque de Produtos</a></li>
+            <li class="active"><a>Ordens de Compra</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header List -->
+    <div class="container">
+      <div class="page-header">
+        <h1>Pedido de Compra</h1>
+      </div>
+    </div>
+
     <div class="container custom_table">
       <table class="table table-striped">
         <thead>
@@ -38,7 +58,7 @@
         <div>
           <form method="POST" action="/order" role="form">
             <input type="hidden" name="ID" value="{{.ID}}">
-            <input type="submit" value="Enviar">
+            <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
         </div>
       </div>
