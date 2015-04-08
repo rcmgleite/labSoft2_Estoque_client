@@ -46,36 +46,30 @@
             <th  style="width: 20%;">Tipo</th>
             <th  style="width: 20%;">Quantidade Atual</th>
             <th  style="width: 20%;">Quantidade Mínima</th>
+            <th  style="width: 20%;"></th>
           </tr>
         </thead>
         <tbody>
-<<<<<<< HEAD
 
-          <tr>
-            <td style="width: 20%; text-align: center">{{$value.Id}}</td>
-=======
-          {{ range $key, $value := . }}
-          <tr>
->>>>>>> 5c01c73e8abca6dbdd07d77fab7d175363966d74
+        {{ range $key, $value := . }}
+            <td style="width: 20%; text-align: center">{{$value.ID}}</td>
             <td style="width: 20%; text-align: center">{{$value.Name}}</td>
             <td style="width: 20%; text-align: center">{{$value.Description}}</td>
             <td style="width: 20%; text-align: center">{{$value.Type}}</td>
             <td style="width: 20%; text-align: center">{{$value.CurrQuantity}}</td>
             <td style="width: 20%; text-align: center">{{$value.MinQuantity}}</td>
-<<<<<<< HEAD
             <td>
-              <form method="GET" action="/productAdd?id={{$value.Id}}">
+              <form method="GET" action="/productUpdate" role="form">
+                <input type="hidden" class="form-control" name="id" value="{{$value.ID}}">
                 <button type="submit" class="btn btn-primary">Atualizar</button>
               </form>
             </td>
             <td>
-              <form method="DELETE" action="/product">
+              <form method="GET" action="/productDelete">
+                <input type="hidden" class="form-control" name="id" value="{{$value.ID}}">
                 <button type="submit" class="btn btn-danger">Deletar</button>
               </form>
             </td>
-
-=======
->>>>>>> 5c01c73e8abca6dbdd07d77fab7d175363966d74
           </tr>
           {{ end }}
         </tbody>
@@ -85,36 +79,29 @@
     <!-- Product Form -->
     <div class="container">
       <h2>Adicionar Novo Produto</h2>
-        <form method="POST" action="/product" role="form">
+        <form method="POST" action="/productAdd" role="form">
         <div class="form-group">
           <label for="usr">Nome:</label>
           <input type="text" class="form-control" name="Name">
         </div>
         <div class="form-group">
-          <label for="pwd">Descrição:</label>
-<<<<<<< HEAD
-          <input type="password" class="form-control" name="Description">
-=======
-          <input type="password" class="form-control" name="Descrption">
->>>>>>> 5c01c73e8abca6dbdd07d77fab7d175363966d74
+          <label for="pwd">Tipo:</label>
+          <input type="text" class="form-control" name="Type">
         </div>
         <div class="form-group">
-          <label for="pwd">Tipo:</label>
-          <input type="password" class="form-control" name="Type">
+          <label for="pwd">Descrição:</label>
+          <input type="text" class="form-control" name="Description">
         </div>
         <div class="form-group">
           <label for="pwd">Quantidade Atual:</label>
-          <input type="password" class="form-control" name="CurrQuantity">
+          <input type="text" class="form-control" name="CurrQuantity">
         </div>
         <div class="form-group">
           <label for="pwd">Quantidade Mínima:</label>
-          <input type="password" class="form-control" name="MinQuantity">
+          <input type="text" class="form-control" name="MinQuantity">
         </div>
-<<<<<<< HEAD
+
         <button type="submit" class="btn btn-success">Adicionar</button>
-=======
-        <button type="submit" class="btn btn-primary">Adicionar</button>
->>>>>>> 5c01c73e8abca6dbdd07d77fab7d175363966d74
       </form>
     </div>
   </body>

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/soriani/labSoft2_Estoque/router"
+	"github.com/rcmgleite/labSoft2_Estoque/router"
 )
 
 //Run = main for client
@@ -12,7 +12,12 @@ func main() {
 	r := router.NewRouter()
 	r.AddRoute("/", router.GET, defaultHandler)
 	r.AddRoute("/product", router.GET, GETProductHandler)
-	r.AddRoute("/product", router.DELETE, DELETEProductHandler)
+	r.AddRoute("/productDelete", router.GET, DELETEProductHandler)
+	r.AddRoute("/productAdd", router.POST, POSTProductHandler)
+	r.AddRoute("/productUpdate", router.GET, GETProductUpdate)
+	r.AddRoute("/productUpdate", router.POST, POSTProductUpdate)
+	r.AddRoute("/order", router.GET, GETOrderHandler)
+	r.AddRoute("/order", router.POST, POSTOrderHandler)
 
 	http.Handle("/", r)
 
