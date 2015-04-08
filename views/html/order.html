@@ -24,11 +24,9 @@
 
     <!-- Header List -->
     <div class="container">
-      <div class="page-header">
-        <h1>Pedido de Compra</h1>
-      </div>
-    </div>
+      <h1>Pedido de Compra</h1>
 
+    <!-- Order List -->
     <div class="container custom_table">
       <table class="table table-striped">
         <thead>
@@ -52,16 +50,14 @@
       </table>
       <br>
     </div>
-
     {{ if .Products }}
-      <div>
-        <div>
-          <form method="POST" action="/order" role="form">
-            <input type="hidden" name="ID" value="{{.ID}}">
-            <button type="submit" class="btn btn-primary">Enviar</button>
-          </form>
-        </div>
+      <div align="right">
+        <form method="POST" action="/order" role="form">
+          <input type="hidden" name="ID" value="{{.ID}}">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
       </div>
-    {{ end }}
+      {{ end }}
+    </div>
   </body>
 </html>
