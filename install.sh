@@ -21,13 +21,6 @@ echo '>> Done!'
 echo '>> Installation Complete!'
 
 # 5) Run server
-echo '> Do you want to run the client right now? (y/n)'
-read answer2
-if [[ $answer2 = "y" ]]
-  then
-  echo '>> Executing client'
-  cd $GOPATH/bin/
-  ./labSoft2_Estoque_client
-else
-  echo '> Exiting...'
-fi
+echo '>> Executing client'
+cd $GOPATH/bin/
+./labSoft2_Estoque_client
