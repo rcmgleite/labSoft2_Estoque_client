@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/rcmgleite/labSoft2_Estoque/router"
+	"github.com/rcmgleite/router"
 )
 
 //Run = main for client
@@ -19,8 +19,6 @@ func main() {
 	r.AddRoute("/order", router.GET, GETOrderHandler)
 	r.AddRoute("/order", router.POST, POSTOrderHandler)
 
-	http.Handle("/", r)
-
 	fmt.Println("Client running on port: 8081")
-	http.ListenAndServe(":8081", nil)
+	http.ListenAndServe(":8081", r)
 }
